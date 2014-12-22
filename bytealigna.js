@@ -68,7 +68,7 @@ function bufferAligner(sizes, size_t, chunksize_t, align, format) {
       if (size % chunksize_t !== 0) { throw "not chunk-aligned: " + size.toString() + "%" + chunksize_t.toString() + "≠0"; }
       
       //"Arrays are not packed in HLSL by default." 
-      align += chunksize_t - (align % chunksize_t);
+      align += ((align%chunksize_t) == 0) ? 0 : chunksize_t - (align%chunksize_t);
       
       if(format == "verbose") {
         aligns.push("[FieldOffset(" + align.toString() + "), MarshalAs(UnmanagedType.ByValArray, SizeConst=" + len.toString() + ")]" + str)
