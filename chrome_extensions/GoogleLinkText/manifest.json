@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "Google Linktext",
+	"version" : "0.0.1",
+	"permissions": [ "contextMenus", "tabs" ],
+	"content_scripts": [ {
+		"all_frames": true,
+		"js": [ "content_script.js" ],
+		"matches": [ "<all_urls>" ],
+		"run_at": "document_end"
+	} ],
+	"background": {
+		"scripts": ["background_script.js"]
+	},
+	"description": "Google searches the link text in a new tab."
+}
