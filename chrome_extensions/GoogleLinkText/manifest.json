@@ -2,15 +2,15 @@
 	"manifest_version": 2,
 	"name": "Google Linktext",
 	"version" : "0.0.1",
-	"permissions": [ "contextMenus", "tabs" ],
+	"permissions": [ "contextMenus", "tabs", "clipboardWrite", "clipboardRead" ],
 	"content_scripts": [ {
 		"all_frames": true,
-		"js": [ "content_script.js" ],
+		"js": [ "js/content_script.js" ],
 		"matches": [ "<all_urls>" ],
 		"run_at": "document_end"
 	} ],
 	"background": {
-		"scripts": ["background_script.js"]
+		"page": "background.html"
 	},
 	"description": "Google searches the link text in a new tab."
 }
