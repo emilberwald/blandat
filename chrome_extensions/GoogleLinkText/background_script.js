@@ -17,9 +17,11 @@ function onClickHandler(info, tab){
 			{command: "Search"}, 
 			function(response) {
 				chrome.tabs.create({url: 
-					"http://www.google.se/search?q=\""
-					+encodeURIComponent(response.linktext.replace(/\s+/g, " "))
-					+"\""});
+					"http://www.google.se/"
+					//find other way of doing this, google thinks you are a bot if you use this.. :(
+					//search?q=\""
+					//+encodeURIComponent(response.linktext.replace(/\s+/g, " "))
+					//+"\""});
 			}
 		)
 	}
