@@ -16,7 +16,7 @@ function onClickHandler(info, tab){
 			{command: "Copy"},
 			function(response) {
 				if(response){
-					toClipboard(response.linktext);
+					toClipboard(response.linktext.replace(/\s+/g, " "));
 					chrome.tabs.create(
 						{url: "http://www.google.se/"}, 
 						function (searchtab){
