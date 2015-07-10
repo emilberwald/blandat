@@ -1,0 +1,127 @@
+﻿body {
+    overflow-y: hidden;
+}
+
+/*
+.rotate {
+    transform: rotateX(180deg);
+}
+
+.scrollable {
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
+.nospace {
+    font-size: 0;
+}
+
+#intervalldiv {
+    white-space:nowrap;
+}
+*/
+.inlineTable {
+    display: inline-block;
+    vertical-align: top;
+}
+
+select {
+    width: 70px;
+    height: 25px;
+}
+
+.intervalRow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 49px;
+}
+
+.topRow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.bottomRow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.index {
+    width: 31px;
+    height: 31px;
+    float: left;
+    border-right: 1px solid black;
+    text-align: center;
+    font-size: 12px;
+    background-color: black;
+    border-color: grey;
+    color: white;
+}
+
+.key {
+    width: 31px;
+    height: 48px;
+    float: left;
+    border-bottom: 1px solid black;
+    border-right: 1px solid grey;
+}
+
+    .key.visible {
+        font-size: 18px;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+    .key.hidden {
+        font-size: 18px;
+        text-align: center;
+        vertical-align: bottom;
+        color: white;
+    }
+
+    .key.visible > span {
+        font-size: 8px;
+        color: black;
+        height: 25%;
+        vertical-align: bottom;
+    }
+
+    .key.hidden > span {
+        font-size: 8px;
+        color: grey;
+        height: 25%;
+        vertical-align: bottom;
+    }
+
+    .key.white {
+        font-size: 18px;
+        text-align: center;
+    }
+
+        .key.white.right {
+            width: 30px;
+            border-right: 1px solid black;
+        }
+
+    .key.black {
+        background-size: 100% 100%;
+    }
+
+        .key.black.left {
+            background-image: url(../images/blackleft.png);
+        }
+
+        .key.black.right {
+            background-image: url(../images/blackright.png);
+        }
+
+        .key.black.middle {
+            background-image: url(../images/blackmiddle.png);
+        }
+/*textual*/
+span {
+    vertical-align: text-bottom;
+}
+
+h1 {
+    font-size: large;
+}
