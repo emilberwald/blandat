@@ -1,0 +1,71 @@
+//--------------------------------------------------------------------------------------------------------
+ComPtr<IDXGIFactory> DXGIFactory;
+HRESULT hr = CreateDXGIFactory(__uuidof(IDXGIFactory), &DXGIFactory ); // & <=> release and get pointer
+//--------------------------------------------------------------------------------------------------------
+ComPtr<IDXGIAdapter> DXGIAdapter; 
+std::vector <ComPtr<IDXGIAdapter>> DXGIAdapters; 
+UINT i = 0; 
+while(DXGIFactory->EnumAdapters(i, &DXGIAdapter) != DXGI_ERROR_NOT_FOUND) 
+{ 
+	DXGIAdapters.push_back(DXGIAdapter); 
+	++i; 
+} 
+//--------------------------------------------------------------------------------------------------------
+HRESULT D3D11CreateDevice(
+  _In_opt_        IDXGIAdapter        *pAdapter,
+                  D3D_DRIVER_TYPE     DriverType,
+                  HMODULE             Software,
+                  UINT                Flags,
+  _In_opt_  const D3D_FEATURE_LEVEL   *pFeatureLevels,
+                  UINT                FeatureLevels,
+                  UINT                SDKVersion,
+  _Out_opt_       ID3D11Device        **ppDevice,
+  _Out_opt_       D3D_FEATURE_LEVEL   *pFeatureLevel,
+  _Out_opt_       ID3D11DeviceContext **ppImmediateContext
+);
+//--------------------------------------------------------------------------------------------------------
+ComPtr<ISwapChainPanelNative> swapChainNative;
+{
+/*
+IInspectable* panelInspectable = (IInspectable*) reinterpret_cast<IInspectable*>(swapChainPanel);
+panelInspectable->QueryInterface(__uuidof(ISwapChainPanelNative), (void **)&m_swapChainNative);
+*/
+//Maybe something like this?
+  ComPtr<IInspectable> swapChain = (IInspectable*)reinterpret_cast<IInspectable*>(swapChainPanel);
+  swapChain.As(swapChainNative);
+//Or try to mimic this?
+ComPtr<ISwapChainBackgroundPanel> spSwapChainBackgroundPanel;
+    FindName<Windows::UI::Xaml::Controls::ISwapChainBackgroundPanel>(
+            L"root",
+            &spSwapChainBackgroundPanel
+            );
+
+    ComPtr<ISwapChainBackgroundPanelNative> spSwapChainBackgroundPanelNative;
+    spSwapChainBackgroundPanel.As<ISwapChainBackgroundPanelNative>(&spSwapChainBackgroundPanelNative);
+    spSwapChainBackgroundPanelNative->SetSwapChain( pSwapChain );
+}
+//--------------------------------------------------------------------------------------------------------
+DXGIFactory2->CreateSwapChainForComposition(D3D11Device.Get(),...,&DXGISwapChain1)
+//--------------------------------------------------------------------------------------------------------
+swapChainNative->SetSwapChain(DXGISwapChain1.Get(),...)
+//--------------------------------------------------------------------------------------------------------
+Now resource creation with D3D11Device-Create... is possible, 
+and rendering stuff like D3D11DeviceContext->...SetShader, D3D11DeviceContext->OMSETRenderTarget, ...
+//--------------------------------------------------------------------------------------------------------
+D2D1CreateFactory
+  ->CreateDevice(DXGIDevice.Get(),...)
+D2D1Device->CreateDeviceContext(...)
+DXGIDevice->SetMaximumFrameLatency(1)
+ComPtr<ID3D11Texture2D> dxgiBackBuffer
+swapChain->GetBuffer(0,IID_PPV_ARGS(&dxgiBackBuffer))
+//  Resource and rendering stuff:
+D2D1DeviceContext->CreateBitmapFromDxgiSurface(dxgiBackBuffer.Get(),...,&D2D1TargetBitmap)
+  ->CreateBitmapFromWicBitmap(...)
+  ->SetTarget(D2D1TargetBitmap.Get())
+  ->CreateBrush
+  ->BeginDraw()
+    ->Draw...
+  ->EndDraw()
+//--------------------------------------------------------------------------------------------------------
+//Send the commands to the GPU
+swapChain->Present(1,0,&params)
