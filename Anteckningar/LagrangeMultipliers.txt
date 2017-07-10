@@ -1,0 +1,6 @@
+$f^k(x)e_k$
+$g^k_i(x)e_k=c^k_i e_k$
+$\mathcal{L}(x,\lambda)=(f^k(x)+\lambda^i(g^k_i(x)-c^k_i))e_k$
+$\partial_{x^k}\mathcal{L}(x,\lambda)=0$
+$\partial_{\lambda^k}\mathcal{L}(x,\lambda)=0$
+These equations can be plugged into a nonlinear solver $\grad \mathcal{L}(x,\lambda)=F(q)=0$ for example scipy.optimize.anderson in SciPy (check if this is true)
