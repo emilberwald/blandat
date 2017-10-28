@@ -1,0 +1,84 @@
+\section{$\nabla$ (Affine connection)}
+\cite{wiki:Connection}: $\nabla\colon\Gamma(E)\to\Gamma(E\otimes T^*M)$, $\sigma\in\Gamma(E)$, $f\in \mathcal{C}^\infty(M,\mathbb{R})$ \cite{wiki:Affine_connection}, $X\in\Gamma(TM)=\mathcal{C}^\infty(M,TM)$ \cite{wiki:Affine_connection}, $\nabla_X\colon\Gamma(E)\to\Gamma(E)$
+\begin{flalign}
+\text{\cite{wiki:Connection}}\quad&
+\nabla(\sigma f) = (\nabla\sigma)f + \sigma\otimes df
+\\\text{\cite{wiki:Connection}}\quad&
+\nabla_X\sigma=(\nabla\sigma)(X)
+\\\text{\cite{wiki:Connection}}\quad&
+\nabla_X(\sigma_1 + \sigma_2) = \nabla_X\sigma_1 + \nabla_X\sigma_2\\
+\text{\cite{wiki:Connection}}\quad&
+\nabla_{X_1 + X_2}\sigma = \nabla_{X_1}\sigma + \nabla_{X_2}\sigma\\
+\text{\cite{wiki:Connection}}\quad&
+\nabla_{X}(f\sigma) = f\nabla_X\sigma + X(f)\sigma\\
+\text{\cite{wiki:Connection}}\quad&
+\nabla_{fX}\sigma = f\nabla_X\sigma
+\end{flalign}
+
+\cite{wiki:Affine_connection}: $\nabla\colon C^\infty(M,\mathrm{T}M)\times C^\infty(M,\mathrm{T}M) \to C^\infty(M,\mathrm{T}M)\colon(X,Y) \mapsto \nabla_X Y$
+\begin{flalign}
+\label{eq:AffineConnection0Linear}\text{\cite{wiki:Affine_connection}}\quad&
+\nabla_{fX}Y=f\nabla_{X}Y
+\\\label{eq:AffineConnection1Liebniz}\text{\cite{wiki:Affine_connection}}\quad&
+\nabla_X(fY)=df(X)Y+f\nabla_{X}Y
+\end{flalign}
+\footnote{\eqref{eq:AffineConnection0Linear}$\Leftrightarrow\nabla$ is $C^\infty(M,\mathbb{R})$-linear in first variable}
+\footnote{\eqref{eq:AffineConnection1Liebniz}$\Leftrightarrow\nabla$ satisfies the Liebniz rule in the second variable.}
+
+\cite{wiki:Covariant_derivative}: TODO
+\begin{flalign}
+\text{\cite{wiki:Covariant_derivative}}\quad&
+\left(\nabla_\mathbf{v} f\right)_p = \left(f \circ \phi\right)'\left(0\right) = \lim_{t \to 0}t^{-1}\left(f\left[\phi\left(t\right)\right] - f\left[p\right]\right).
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\left(\nabla_{g\mathbf{x} + h\mathbf{y}} \mathbf{u}\right)_p = \left(\nabla_\mathbf{x} \mathbf{u}\right)_p g + \left(\nabla_\mathbf{y} \mathbf{u}\right)_p h
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\left(\nabla_\mathbf{v}\left[\mathbf{u} + \mathbf{w}\right]\right)_p = \left(\nabla_\mathbf{v} \mathbf{u}\right)_p + \left(\nabla_\mathbf{v} \mathbf{w}\right)_p
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\left(\nabla_\mathbf{v} \left[f\mathbf{u}\right]\right)_p = f(p)\left(\nabla_\mathbf{v} \mathbf{u})_p + (\nabla_\mathbf{v}f\right)_p\mathbf{u}_p
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\left(\nabla_\mathbf{v}\alpha\right)_p \left(\mathbf{u}_p\right) = \nabla_\mathbf{v}\left[\alpha\left(\mathbf{u}\right)\right]_p - \alpha_p\left[\left(\nabla_\mathbf{v}\mathbf{u}\right)_p\right].
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\nabla_\mathbf{v}\left(\varphi \otimes \psi\right)_p = \left(\nabla_\mathbf{v}\varphi\right)_p \otimes \psi(p) + \varphi(p) \otimes \left(\nabla_\mathbf{v}\psi\right)_p
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+\nabla_\mathbf{v}(\varphi + \psi)_p = (\nabla_\mathbf{v}\varphi)_p + (\nabla_\mathbf{v}\psi)_p.
+\\\text{\cite{wiki:Covariant_derivative}}\quad&
+(\nabla_Y T)\left(\alpha_1, \alpha_2, \ldots, X_1, X_2, \ldots\right) = Y\left(T\left(\alpha_1,\alpha_2, \ldots, X_1, X_2, \ldots\right)\right) - T\left(\nabla_Y\alpha_1, \alpha_2, \ldots, X_1, X_2, \ldots\right) - T\left(\alpha_1, \nabla_Y\alpha_2, \ldots, X_1, X_2, \ldots\right) - \ldots - T\left(\alpha_1, \alpha_2, \ldots, \nabla_YX_1, X_2, \ldots\right) -  T\left(\alpha_1, \alpha_2, \ldots, X_1, \nabla_YX_2, \ldots\right) - \ldots
+\end{flalign}
+
+\cite{wiki:Metric_connection}: TODO
+\begin{flalign}
+\text{\cite{wiki:Metric_connection}}\quad&
+d \langle \sigma,\tau\rangle = \langle D\sigma,\tau\rangle + \langle \sigma,D \tau\rangle,\quad D_X \langle \sigma,\tau\rangle = d_X \langle \sigma,\tau\rangle \equiv X\langle \sigma,\tau\rangle.
+\\\label{eq:RiemannianConnection}\text{\cite{wiki:Metric_connection}}\quad&
+\nabla_Xg(Y,Z)=g(\nabla_XY,Z)+g(Y,\nabla_XZ)
+\end{flalign}
+\footnote{\eqref{eq:RiemannianConnection} $\Leftrightarrow$ Riemannian connection $\nabla$ on pseudo-Riemannian manifold (M,g)}
+
+\cite{wiki:Torsion_tensor}: TODO
+\begin{flalign}
+\text{\cite{wiki:Torsion_tensor}}\quad&
+T(X, Y) := \nabla_X Y - \nabla_Y X - [X,Y]
+\\\text{\cite{wiki:Torsion_tensor}}\quad&
+R(X, Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_{[X, Y]}Z.
+\end{flalign}
+
+\cite{wiki:Lie_derivative}: $[X,Y]: C^\infty(M) \rightarrow C^\infty(M)$
+\begin{flalign}
+\text{\cite{wiki:Lie_derivative}}\quad&
+[X,Y](f) = X(Y(f)) - Y(X(f))
+\end{flalign}
+
+\subsection{Summary}
+Guesses:
+\begin{flalign}
+&
+\nabla(X,f)_p=\lim_{t \to 0}t^{-1}\left(f\left[\phi\left(t\right)\right] - f\left[\phi(0)\right]\right),\quad \lim_{t \to 0}t^{-1}(\phi(t) - \phi(0))= X_{\phi(0)},\quad \phi(0)=p
+\\&
+\nabla(fX,Y) = f\nabla(X,Y)
+\\&
+\nabla(fX,Y)=\nabla(X,fY)-\nabla(X,f)Y
+\\&
+\nabla(X,Y)-\nabla(Y,X)=T^\nabla(X,Y)-(X\circ Y - Y\circ X)
+\\&
+\nabla(X,\nabla(Y,Z))-\nabla(Y,\nabla(X,Z)) = R^\nabla(X,Y)(Z) + \nabla(X\circ Y - Y\circ X,Z)
+\end{flalign}
