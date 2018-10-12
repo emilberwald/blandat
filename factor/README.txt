@@ -1,0 +1,3 @@
+Skrev i factor,
+http://factorcode.org/
+var lite omständigt att lära sig / komma in i det igen så ger upp för tillfället...
