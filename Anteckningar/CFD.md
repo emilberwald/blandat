@@ -11,14 +11,14 @@ One should use operator splitting to be able to solve without the volume source 
 
 #### Transport equations
 
-- ordered basis of species $\mathcal{S}$
+- ordered basis of species $\mathcal{S}$, called $\mathrm{species}$
 - species $s\in\mathcal{S}$ with 
   - mass fraction $Y_s$
   - molar fraction $X_s$
   - mass production rate $\omega_s$
   - enthalpy per unit mass $h_s$
   - force per unit mass $a_s$, usually gravitational acceleration $\bold{a}_s\ = \bold{g} = - \nabla (gz)$
-- diffusion matrix $D$ with component $D_{ab}$ being cross-diffusion of species $a$ with respect to species $b$, $(a,b)\in\mathcal{S}\times\mathcal{S}$
+- diffusion matrix $D$ with component $D_{ab}$ being cross-diffusion of species $a$ with respect to species $b$, $(a,b)\in\mathrm{species}\times\mathrm{species}$
 - species thermal diffusion $\theta$, where component $\theta_a$ is thermal diffusion of species $a$
 - species thermal diffusion ratios $\chi = D^{-1}\theta$, where component $\chi_a$ is thermal diffusion ratio of species $a$
 - thermal conductivity $\lambda$
@@ -34,7 +34,7 @@ Y_a &= \frac{(\rho_m)_a}{\rho_m}\\
 
 q =&\left[\sum_{a\in\mathrm{species}}((\phi_m) h + p\chi V)_a\right]-\lambda\nabla T \\
 
-V_a =&\left[\sum_{b\in\mathrm{species}}D_{ab}\left[\nabla(X_b) +\frac{1}{p}\left[(X_b -Y_b)\nabla(p) + (\phi_m)_b\sum_cY_c(a_c - a_b)\right]\right]\right]+\theta_a\frac{1}{T}\nabla(T)
+V_a =&\left[\sum_{b\in\mathrm{species}}D_{ab}\left[\nabla(X_b) +\frac{1}{p}\left[(X_b -Y_b)\nabla(p) + (\phi_m)_b\sum_{c\in\mathrm{species}}Y_c(a_c - a_b)\right]\right]\right]+\theta_a\frac{1}{T}\nabla(T)
 \end{align}
 $$
 
