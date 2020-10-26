@@ -52,7 +52,7 @@ $$
 Momentum transport:
 $$
 \begin{align}
-(\phi_p)^k =&\; \rho v^k\\
+(\phi_p)^k =&\; \rho_m v^k\\
 
 ((s_{\partial\Omega})_p)_{ij} =&\; (\sigma_\mathrm{static})_{ij} + (\sigma_\mathrm{elastic})_{ij} + 
 
@@ -65,17 +65,17 @@ $$
 
 (\sigma_\mathrm{viscous})_{ij}=& \mu \nabla_i(g_{jk}v^k) + \mu\nabla_j(g_{ik}v^k) + \lambda\nabla_k(g_{km}v^m)g_{ij}\\
 
-((s_\Omega)_p)_i =& \sum_{s\in\mathrm{species}}(\rho_m \cdot a_i)_s
+((s_\Omega)_p)_i =& \sum_{s\in\mathrm{species}}(\phi_m \cdot a_i)_s
 \end{align}
 $$
 Energy transport:
 $$
 \begin{align}
-\phi_E =& \left[\sum_{s\in\mathrm{species}}(\rho_m h)_s\right] - p + \frac{1}{2}\langle\rho_m v, v\rangle\\
+\phi_E =& \left[\sum_{s\in\mathrm{species}}(\phi_m h)_s\right] - p + \frac{1}{2}\langle\rho_m v, v\rangle\\
 
 (s_{\partial\Omega})_E =& -q+\langle \sigma, v\rangle\\
 
-(s_\Omega)_E =& \sum_{s\in\mathrm{species}}\langle (\rho_mv + \rho_m V)_s, (a)_s \rangle\\
+(s_\Omega)_E =& \sum_{s\in\mathrm{species}}\langle (\phi_mv + \phi_m V)_s, (a)_s \rangle\\
 \end{align}
 $$
 
