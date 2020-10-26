@@ -83,11 +83,13 @@ $$
 
 #### Equations of State
 
-"Engineering Enthalpy" = "Enthalpy of Formation" + "Enthalpy Increment from $T_{\mathrm{ref}}=298.5[K]$ to $T$"
+"Engineering Enthalpy" = "Enthalpy of Formation at $T_{\mathrm{ref}} = 298.5[K]$" + "(isobaric) Enthalpy Increment from $T_{\mathrm{ref}}=298.5[K]$ to $T$"
 
-"Specific Enthalpy" = "Enthalpy per Unit Mass"
+"Enthalpy of Formation at $T$" = $\Delta_fH^0_T$
 
-"Enthalpy Increment" = $\int_0^T C_p dT$, 
+"Specific Enthalpy" = "Enthalpy per Unit Mass" = $h$
+
+"(isobaric) Enthalpy Increment from $0$ to $T$" = $\int_0^T C_p dT$
 
 "Enthalpy" = $H = U + pV = \int\rho_m h dV$
 
@@ -101,7 +103,11 @@ $$
 
 $dH = d(U + pV) = TdS - pdV + Vdp + pdV = TdS + Vdp$
 
-$dH = C_pdT + V(p,T)dp - \partial_T(V(p,T)) T dp$
+$dS(T,V) = \partial_T(S)dT + \partial_V(S)dV\Rightarrow TdS = T(\partial_T(S)dT + \partial_V(S)dV) = C_VdT + T\partial_V(S)dV$
+
+$dS(T,p) = \partial_T(S)dT + \partial_p(S)dp \Rightarrow TdS = T(\partial_T(S)dT + \partial_p(S)dp) = C_pdT + T\partial_p(S)dp$
+
+$dH(T,p) = C_pdT + (T\partial_p(S(T,p)) + V(T,p))dp$
 
 #### Jacobian of divergence term with respect to material property
 
