@@ -81,6 +81,28 @@ $$
 
 
 
+#### Equations of State
+
+"Engineering Enthalpy" = "Enthalpy of Formation" + "Enthalpy Increment from $T_{\mathrm{ref}}=298.5[K]$ to $T$"
+
+"Specific Enthalpy" = "Enthalpy per Unit Mass"
+
+"Enthalpy Increment" = $\int_0^T C_p dT$, 
+
+"Enthalpy" = $H = U + pV = \int\rho_m h dV$
+
+With some kind of Stoke's hypothesis $\partial_V(U) = -p = \frac{1}{3}Tr(\sigma)$:
+
+$$
+dU \\
+= \partial_S(U) dS +\partial_V(U)dV +\sum_{ij}\partial_{\epsilon_{ij}}(U)d\epsilon_{ij}+ \sum_i\partial_{N_i}(U) dN_i \\
+= TdS +\frac{1}{3}\sum_{i}(\sigma_{\mathrm{static}})_{ii}dV + \sum_{ij}(\sigma_{\mathrm{elastic}})_{ij}d\epsilon_{ij} + \langle\langle\sigma_{\mathrm{viscous}}, v\rangle, dA\rangle + \sum_i\mu_idN_i
+$$
+
+$dH = d(U + pV) = TdS - pdV + Vdp + pdV = TdS + Vdp$
+
+$dH = C_pdT + V(p,T)dp - \partial_T(V(p,T)) T dp$
+
 #### Jacobian of divergence term with respect to material property
 
 ##### Shallow water equations
