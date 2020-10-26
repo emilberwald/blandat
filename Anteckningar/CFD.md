@@ -71,7 +71,7 @@ $$
 Energy transport:
 $$
 \begin{align}
-\phi_E =& \rho_m h - p + \frac{1}{2}\langle\rho_m v, v\rangle\\
+\phi_E =& \left[\sum_{s\in\mathrm{species}}(\rho_m h)_s\right] - p + \frac{1}{2}\langle\rho_m v, v\rangle\\
 
 (s_{\partial\Omega})_E =& -q+\langle \sigma, v\rangle\\
 
