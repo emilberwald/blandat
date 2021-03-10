@@ -167,6 +167,9 @@ if bpy.context.object.type == "ARMATURE":
     disable_stretch_to_constraints_for_spine(control_rig)
 
     select_active(game_rig)
+    # TODO: To allow squash and stretch one can
+    #   - clear all parents, use copy transform
+    #   - disconnect all bones (keeping hierachy), use copy location and copy rotation
     constrain_with_copy_transforms(control_rig=control_rig, game_rig=game_rig)
     reparent_meshes(control_rig=control_rig, game_rig=game_rig)
 
