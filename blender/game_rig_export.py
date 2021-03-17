@@ -241,7 +241,7 @@ if bpy.context.object.type == "ARMATURE":
     output = pathlib.Path(bpy.data.filepath).with_suffix(".fbx")
     bpy.ops.export_scene.fbx(
         add_leaf_bones=False,
-        apply_scale_options="FBX_SCALE_NONE",
+        apply_scale_options="FBX_SCALE_ALL",
         apply_unit_scale=True,
         armature_nodetype="NULL",
         axis_forward="Z",
