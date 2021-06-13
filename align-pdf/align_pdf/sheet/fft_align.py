@@ -12,6 +12,7 @@ def fft_align(input_path: pathlib.Path, output_path: pathlib.Path):
         (sorted((file for file in input_path.glob("**/*") if file.is_file()), key=lambda path: str(path)))
     ):
         file: pathlib.Path
+        output_path.mkdir(exist_ok=True)
         try:
             image = cv2.imread(str(file))
             image = align_image(image)
