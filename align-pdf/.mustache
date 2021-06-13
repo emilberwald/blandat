@@ -1,0 +1,17 @@
+{{name}} {{summaryPlaceholder}}
+{{extendedSummaryPlaceholder}}
+{{#args}}
+    :param {{typePlaceholder}} {{var}}: {{descriptionPlaceholder}}
+{{/args}}
+{{#kwargs}}
+    :keyword {{typePlaceholder}} {{var}}: {{&default}}: {{descriptionPlaceholder}}
+{{/kwargs}}
+{{#exceptions}}
+    :raises {{type}}: {{descriptionPlaceholder}}
+{{/exceptions}}
+{{#yields}}
+    :return {{typePlaceholder}}: [yields] {{descriptionPlaceholder}}
+{{/yields}}
+{{#returns}}
+    :return {{typePlaceholder}}: {{descriptionPlaceholder}}
+{{/returns}}
