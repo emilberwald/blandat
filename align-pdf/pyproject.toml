@@ -2,7 +2,7 @@
 name = "align-pdf"
 version = "0.1.0"
 description = ""
-authors = ["emilberwald <emilberwald@hotmail.com>"]
+authors = ["emilberwald"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
