@@ -7,9 +7,7 @@ import PIL
 import PIL.Image
 
 
-@click.command(help="Convert pdf <-> images")
-@click.option("--input", required=True, type=click.Path(path_type=pathlib.Path))
-def convert_cli(input: pathlib.Path):
+def convert(input : pathlib.Path):
     if input.is_file() and input.suffix == ".pdf":
         output = input.with_suffix("")
         output.mkdir(exist_ok=False)
@@ -29,3 +27,8 @@ def convert_cli(input: pathlib.Path):
         pil_images[0].save(str(output), save_all=True, append_images=pil_images[1:])
     else:
         raise ValueError(f"not clear how to convert {input}.")
+
+@click.command(help="Convert pdf <-> images")
+@click.option("--input", required=True, type=click.Path(path_type=pathlib.Path))
+def convert_cli(input: pathlib.Path):
+    convert(input)
