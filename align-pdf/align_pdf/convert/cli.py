@@ -12,7 +12,7 @@ def convert(input : pathlib.Path):
         output = input.with_suffix("")
         output.mkdir(exist_ok=False)
         logging.info(f"Convert {input} to images in {output} ...")
-        pdf2image.convert_from_path(str(input), output_folder=output)
+        pdf2image.convert_from_path(str(input), output_folder=output, dpi=100)
     elif input.is_dir():
         output = input.with_suffix(".pdf")
         assert not output.exists()
@@ -21,7 +21,7 @@ def convert(input : pathlib.Path):
         for file in sorted((file for file in input.glob("**/*") if file.is_file()), key=lambda path: str(path)):
             try:
                 pil_image = PIL.Image.open(str(file))
-                pil_images.append(pil_image)
+                pil_images.append(pil_image.convert("RGB"))
             except:
                 pass
         pil_images[0].save(str(output), save_all=True, append_images=pil_images[1:])

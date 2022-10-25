@@ -34,12 +34,12 @@ def crop_image(image, pad_on_left):
     # A4 w 210 h 297
     # 1 cm margin above and below is ca 4% of height
     # margin should be 20-25 mm, 10% of width for holes
-    vertical = int(0.04 * h)
-    left = int(0.1 * w) if pad_on_left else 0
-    right = int(0.1 * w) if not pad_on_left else 0
-    cropped_image = cv2.copyMakeBorder(
-        cropped_image, vertical, vertical, left, right, cv2.BORDER_CONSTANT, value=(255, 255, 255) if is_color else 255
-    )
+    # vertical = int(0.04 * h)
+    # left = int(0.1 * w) if pad_on_left else 0
+    # right = int(0.1 * w) if not pad_on_left else 0
+    # cropped_image = cv2.copyMakeBorder(
+    #     cropped_image, vertical, vertical, left, right, cv2.BORDER_CONSTANT, value=(255, 255, 255) if is_color else 255
+    # )
 
     return cropped_image
 
