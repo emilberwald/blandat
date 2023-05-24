@@ -1,0 +1,7 @@
+[project]
+name = "physics"
+
+dependencies = [
+  "numpy",
+  "matplotlib"
+]
