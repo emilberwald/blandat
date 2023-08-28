@@ -48,16 +48,21 @@ def enable_all_rig_layers(rig: bpy.types.Armature):
 def fix_bone_hierarchy(rig: bpy.types.Armature):
     bpy.ops.object.mode_set(mode="EDIT", toggle=False)
     # MakeHuman
-    rig.data.edit_bones["DEF-thigh.L"].parent = rig.data.edit_bones["DEF-spine"]
-    rig.data.edit_bones["DEF-thigh.R"].parent = rig.data.edit_bones["DEF-spine"]
-    rig.data.edit_bones["DEF-pelvis.L"].parent = rig.data.edit_bones["DEF-spine"]
-    rig.data.edit_bones["DEF-pelvis.R"].parent = rig.data.edit_bones["DEF-spine"]
-    rig.data.edit_bones["DEF-shoulder.L"].parent = rig.data.edit_bones["DEF-spine.005"]
-    rig.data.edit_bones["DEF-shoulder.R"].parent = rig.data.edit_bones["DEF-spine.005"]
-    rig.data.edit_bones["DEF-upper_arm.L"].parent = rig.data.edit_bones["DEF-deltoid.L"]
-    rig.data.edit_bones["DEF-upper_arm.R"].parent = rig.data.edit_bones["DEF-deltoid.R"]
-    rig.data.edit_bones["DEF-breast.L"].parent = rig.data.edit_bones["DEF-spine.003"]
-    rig.data.edit_bones["DEF-breast.R"].parent = rig.data.edit_bones["DEF-spine.003"]
+    if (bone := rig.data.edit_bones.get("DEF-spine", None)) is not None:
+        rig.data.edit_bones["DEF-thigh.L"].parent = bone
+        rig.data.edit_bones["DEF-thigh.R"].parent = bone
+        rig.data.edit_bones["DEF-pelvis.L"].parent = bone
+        rig.data.edit_bones["DEF-pelvis.R"].parent = bone
+    if (bone := rig.data.edit_bones.get("DEF-spine.005", None)) is not None:
+        rig.data.edit_bones["DEF-shoulder.L"].parent = bone
+        rig.data.edit_bones["DEF-shoulder.R"].parent = bone
+    if (bone := rig.data.edit_bones.get("DEF-deltoid.L", None)) is not None:
+        rig.data.edit_bones["DEF-upper_arm.L"].parent = bone
+    if (bone := rig.data.edit_bones.get("DEF-deltoid.R", None)) is not None:
+        rig.data.edit_bones["DEF-upper_arm.R"].parent = bone
+    if (bone := rig.data.edit_bones.get("DEF-spine.003", None)) is not None:
+        rig.data.edit_bones["DEF-breast.L"].parent = bone
+        rig.data.edit_bones["DEF-breast.R"].parent = bone
     # Rigify
     # Everything under 'face' should be parented to the neck keeping offset
 
@@ -83,10 +88,12 @@ def remove_bone_constraints(rig: bpy.types.Armature):
 
 def remove_drivers(rig: bpy.types.Armature):
     bpy.ops.object.mode_set(mode="OBJECT", toggle=False)
-    for driver in rig.animation_data.drivers:
-        rig.animation_data.drivers.remove(driver)
-    for driver in rig.data.animation_data.drivers:
-        rig.data.animation_data.drivers.remove(driver)
+    if rig.animation_data is not None:
+        for driver in rig.animation_data.drivers:
+            rig.animation_data.drivers.remove(driver)
+    if rig.data.animation_data is not None:
+        for driver in rig.data.animation_data.drivers:
+            rig.data.animation_data.drivers.remove(driver)
 
 
 def remove_nondeforming_bones(rig: bpy.types.Armature, include=["root"]):
@@ -136,7 +143,7 @@ def set_ik_stretch_to_zero(rig: bpy.types.Armature):
 bpy.ops.object.mode_set(mode="OBJECT", toggle=False)
 if bpy.context.object.type == "ARMATURE":
     bpy.ops.object.mode_set(mode="EDIT", toggle=False)
-    for obj in bpy.context.scene.collection.all_objects:
+    for obj in bpy.context.scene.collection.all_objects[:]:
         obj.hide_select = False
         obj.hide_set(False)
 
@@ -173,55 +180,57 @@ if bpy.context.object.type == "ARMATURE":
     constrain_with_copy_transforms(control_rig=control_rig, game_rig=game_rig)
     reparent_meshes(control_rig=control_rig, game_rig=game_rig)
 
-    for nla in control_rig.animation_data.nla_tracks:
-        nla: bpy.types.NlaTrack  # type: ignore
-        nla.is_solo = False
-        nla.mute = True
+    if control_rig.animation_data is not None:
+        for nla in control_rig.animation_data.nla_tracks:
+            nla: bpy.types.NlaTrack  # type: ignore
+            nla.is_solo = False
+            nla.mute = True
 
-    for nla in control_rig.animation_data.nla_tracks:
-        nla: bpy.types.NlaTrack  # type: ignore
-        nla.is_solo = True
+        for nla in control_rig.animation_data.nla_tracks:
+            nla: bpy.types.NlaTrack  # type: ignore
+            nla.is_solo = True
 
-        frames = list()
-        for strip in nla.strips:
-            strip: bpy.types.NlaStrip  # type: ignore
-            frames.append(strip.action_frame_start)
-            frames.append(strip.action_frame_end)
-        if frames:
-            first_keyframe = int(min(frames))
-            last_keyframe = math.ceil(max(frames))
-            select_active(game_rig)
-            select_bones(game_rig)
-            bpy.ops.nla.bake(
-                frame_start=first_keyframe,
-                frame_end=last_keyframe,
-                step=1,
-                only_selected=True,
-                visual_keying=True,
-                clear_constraints=False,
-                clear_parents=True,
-                use_current_action=True,
-                clean_curves=True,
-                bake_types={"POSE"},
-            )
-            if game_rig.animation_data.action:
-                nla_track = game_rig.animation_data.nla_tracks.new()
-                nla_track.name = nla.name
-                game_rig.animation_data.action.name = f"{nla.name}.baked"
-                strip = nla_track.strips.new(
-                    nla.name, game_rig.animation_data.action.frame_range[0], game_rig.animation_data.action
+            frames = list()
+            for strip in nla.strips:
+                strip: bpy.types.NlaStrip  # type: ignore
+                frames.append(strip.action_frame_start)
+                frames.append(strip.action_frame_end)
+            if frames:
+                first_keyframe = int(min(frames))
+                last_keyframe = math.ceil(max(frames))
+                select_active(game_rig)
+                select_bones(game_rig)
+                bpy.ops.nla.bake(
+                    frame_start=first_keyframe,
+                    frame_end=last_keyframe,
+                    step=1,
+                    only_selected=True,
+                    visual_keying=True,
+                    clear_constraints=False,
+                    clear_parents=True,
+                    use_current_action=True,
+                    clean_curves=True,
+                    bake_types={"POSE"},
                 )
-                game_rig.animation_data.action = None
+                if game_rig.animation_data.action:
+                    nla_track = game_rig.animation_data.nla_tracks.new()
+                    nla_track.name = nla.name
+                    game_rig.animation_data.action.name = f"{nla.name}.baked"
+                    strip = nla_track.strips.new(
+                        nla.name, game_rig.animation_data.action.frame_range[0], game_rig.animation_data.action
+                    )
+                    game_rig.animation_data.action = None
 
-    for nla in control_rig.animation_data.nla_tracks:
-        nla: bpy.types.NlaTrack  # type: ignore
-        nla.is_solo = False
-        nla.mute = True
+        for nla in control_rig.animation_data.nla_tracks:
+            nla: bpy.types.NlaTrack  # type: ignore
+            nla.is_solo = False
+            nla.mute = True
 
-    for nla in game_rig.animation_data.nla_tracks:
-        nla: bpy.types.NlaTrack  # type: ignore
-        nla.is_solo = False
-        nla.mute = False
+    if game_rig.animation_data is not None:
+        for nla in game_rig.animation_data.nla_tracks:
+            nla: bpy.types.NlaTrack  # type: ignore
+            nla.is_solo = False
+            nla.mute = False
 
     bpy.ops.object.mode_set(mode="OBJECT", toggle=False)
     for bone in game_rig.pose.bones:
@@ -234,8 +243,9 @@ if bpy.context.object.type == "ARMATURE":
     bpy.ops.object.select_grouped(type="CHILDREN_RECURSIVE")
     game_rig.select_set(True)
     bpy.context.view_layer.objects.active = game_rig
-    for obj in bpy.context.scene.collection.all_objects:
-        if not obj in bpy.context.selected_objects:
+
+    for obj in bpy.context.view_layer.objects[:]:
+        if obj not in bpy.context.selected_objects:
             obj.hide_set(True)
 
     output = pathlib.Path(bpy.data.filepath).with_suffix(".fbx")
