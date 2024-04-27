@@ -110,7 +110,7 @@ class NodeMeta(type):
         return super().__new__(cls, name, bases, namespace)
 
     @classmethod
-    def _handle_param(cls, param):
+    def _handle_param(cls, param: inspect.Parameter):
         if type_args := typing.get_args(param.annotation):
             for type_arg in type_args:
                 if typing.get_origin(type_arg) == typing.Annotated:
