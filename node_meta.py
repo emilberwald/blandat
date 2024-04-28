@@ -91,7 +91,7 @@ class NodeMeta(type):
             # skip 'self'
             for name, param in itertools.islice(signature.parameters.items(), 1, None):
                 if typing.get_origin(param.annotation) is typing.Annotated:
-                    required_variables[name] = cls._handle_annotated(param.annotation)
+                    required_variables[name] = cls._handle_annotated_input(param.annotation)
                 elif typing.get_origin(param.annotation) is typing.Optional:
                     optional_variables[name] = cls._handle_param(param)
                 else:
@@ -101,7 +101,7 @@ class NodeMeta(type):
             namespace["INPUT_TYPES"] = classmethod(lambda cls: input_types)
 
             if typing.get_origin(signature.return_annotation) is typing.Annotated:
-                namespace["RETURN_TYPES"] = cls._handle_annotated(signature.return_annotation)
+                namespace["RETURN_TYPES"] = cls._handle_annotated_output(signature.return_annotation)
                 if return_names is not None:
                     if len(namespace["RETURN_TYPES"]) == len(return_names):
                         namespace["RETURN_NAMES"] = return_names
@@ -114,10 +114,10 @@ class NodeMeta(type):
         if type_args := typing.get_args(param.annotation):
             for type_arg in type_args:
                 if typing.get_origin(type_arg) == typing.Annotated:
-                    return cls._handle_annotated(type_arg)
+                    return cls._handle_annotated_input(type_arg)
 
     @classmethod
-    def _handle_annotated(cls, annotation: typing.Annotated):
+    def _handle_annotated_input(cls, annotation: typing.Annotated):
         if (metadatas := getattr(annotation, "__metadata__", None)) is not None:
             # TODO: support "hidden" here ?
             type_hints = []
@@ -130,6 +130,24 @@ class NodeMeta(type):
                     type_hints.append(cls.bool())
                 elif metadata is str:
                     type_hints.append(cls.str())
+                else:
+                    type_hints.append(metadata)
+            return tuple(type_hints)
+
+    @classmethod
+    def _handle_annotated_output(cls, annotation: typing.Annotated):
+        if (metadatas := getattr(annotation, "__metadata__", None)) is not None:
+            # TODO: support "hidden" here ?
+            type_hints = []
+            for metadata in metadatas:
+                if metadata is float:
+                    type_hints.append(NodeMeta.Types.FLOAT.value)
+                elif metadata is int:
+                    type_hints.append(NodeMeta.Types.INT.value)
+                elif metadata is bool:
+                    type_hints.append(NodeMeta.Types.BOOLEAN.value)
+                elif metadata is str:
+                    type_hints.append(NodeMeta.Types.STRING.value)
                 else:
                     type_hints.append(metadata)
             return tuple(type_hints)
