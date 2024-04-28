@@ -109,6 +109,7 @@ class NodeMeta(type):
                 if len(namespace["RETURN_TYPES"]) == len(return_names):
                     namespace["RETURN_NAMES"] = return_names
             namespace["OUTPUT_NODE"] = output_node
+            logging.info(f"{name}: {namespace}")
 
         return super().__new__(cls, name, bases, namespace)
 
@@ -116,6 +117,8 @@ class NodeMeta(type):
     def _handle_output_signature(cls, signature):
         if typing.get_origin(signature.return_annotation) is typing.Annotated:
             return_types = cls._handle_output_annotated(signature.return_annotation)
+        elif signature.return_annotation is None:
+            return ()
         else:
             return_types = (cls._to_output_type_hint(signature.return_annotation),)
         return return_types
@@ -157,7 +160,8 @@ class NodeMeta(type):
             # TODO: support "hidden" here ?
             type_hints = []
             for metadata in metadatas:
-                type_hints.append(cls._to_output_type_hint(type_hints, metadata))
+                if (type_hint := cls._to_output_type_hint(metadata)) is not None:
+                    type_hints.append(type_hint)
             return tuple(type_hints)
 
     @classmethod
