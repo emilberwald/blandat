@@ -20,14 +20,14 @@ Fyll diskhon med så många bestick som får plats
 För varje bestick i diskhon:
  Borsta besticket
  Lägg besticket i sköljhon
-Flytta besticken från sköljhon till bestickstället
+När alla dessa besticken ligger i sköljhon, flytta dem från sköljhon till bestickstället
 Upprepa tills alla besticken är rena.
 
 Fyll diskhon med så många små dryckeskärl som får plats
 För varje kärl i diskhon:
  Borsta kärlet
  Lägg kärlet i sköljhon
-Flytta kärlen från sköljhon så de står uppochner på diskunderlägget
+När alla dessa kärlen ligger i sköljhon, flytta kärlen från sköljhon så de står uppochner på diskunderlägget
 Upprepa tills alla kärlen är rena.
 
 Vid denna tidpunkt kan diskunderlägget vara fullt.
