@@ -56,5 +56,8 @@ Sen gjutjärnspannor, grytor etc.
 Brukar gå hyfsat snabbt och man behöver inte oroa sig lika mycket över att en kniv döljer sig i mörkret om man gör såhär.
 Man kan behöva låta porslinet dra i diskvattnet om det har torkat fast dock.
 
+# Säkerhet
 Akta för jack i glas. De kan orsaka skärsår.
+
+## Disk som är påväg att krypa iväg
 Akta för att ha i mögel i diskhon. Spar möglig disk och hantera den efteråt i ett ättiksbad. Låt det ligga i ättiksbadet minst en kvart kanske längre (har inte hittat exakt hur länge som behövs). Skölj av i kokande vatten efteråt om du är extra nojjig.
