@@ -1,0 +1,134 @@
+Use /X to indicate X added below root (within closest octave) use /Xvb to indicate in the octave below that
+Use addX to indicate X added above root
+Use _X to indicate shifting everything down X
+Use ^X to indicate shifting everything up X
+Use : to indicate complicated voicings or adornments
+
+"12 bar blues"
+ionian: I - I - I - I - IV_8 - IV_8 - I - I - V_8 - IV_8 - I - I
+wiki:   I - I - I - I - IV - IV - I - I - V - IV - I - I
+
+"Rhythm changes"
+ionian: |: I - I:/6 - IIm - V_8 :| I - I:(b)7 - IV - #IVdim - I - V:(b)7
+wiki:   I - iv - ii - V / I - I7 - iv - I - V - I / III7 - VI7 - II7 - V7
+
+"Passamezzo moderno"
+ionian: I - IV - I - V_8 - I - IV - I - V_8 - I
+wiki:   I - IV - I - V - I - IV - I - V - I
+
+"Montgomery-Ward bridge"
+ionian: I:(b)7 - IV:(b)7 - IIm:(b)7 - V:(b)7
+wiki:   I - IV - ii - V
+
+"I-IV-bVII-IV"
+ionian: I - IV - bVII - IV
+wiki:   I - IV - ♭VII - IV
+
+"Later Folia"
+ionian:         Im  - IV - Im - VII  - IV   - VII  - Im - IV - Im - bVI - Im - VII  - IV   - VII  - Im - bVI - Im
+aeolian:        Im  - V  - Im - bVII - bIII - bVII - Im - V  - Im - V   - Im - bVII - bIII - bVII - Im - V   - Im
+wiki:   i - V - i - ♭VII - ♭III - ♭VII - i - V - i - V - i - ♭VII - ♭III - ♭VII - i - V - i
+
+"Eight bar blues"
+ionian: I^8:(b)7 - V:(b)7 - IV:(b)7 - IV:(b)7 - I^8:(b)7 - V:(b)7 - I^8:(b)7 - V:(b)7
+wiki:   I - V - IV - IV - I - V - I - V
+
+"Pachelbels canon"
+ionian: I^8 - V - VIm - IIIm - IV - I - IV - V
+wiki:   I - V - vi - iii - IV - I - IV - V
+
+"I-V-vi-IV"
+ionian: I - V - VIm - IV
+wiki:   I - V - vi - IV
+
+"Coltrane changes in C"
+ionian: I - V/b6  | bVI  - VII | III - V:/(b)7 | I
+wiki:   I - V/♭VI | ♭VI - V/III | III - V | I
+
+"I-IV-♭VII-IV"
+ionian: I - IV - bVII - IV
+wiki:   I - IV - ♭VII - IV
+
+"I - vi - ii - V turnaround"
+ionian: I - VIm:(b)7 - IIm - V:(b)7
+wiki:   I - vi - ii - V
+
+"50s progression"
+ionian: I - VIm - IV - V:(b)7 - I
+wiki:   I - vi - IV - V
+
+"I-♭VII-♭VI-♭VII"
+ionian: I - bVII - bVI - bVII
+wiki:   I - ♭VII - ♭VI - ♭VII
+
+"Bird blues progression"
+ionian: I:maj7 | VIIdim:(b)7 - III:(b)7 | VIm:(b)7 - II:(b)7 | V:(b)7 - I:(b)7 | IV:(b)7 | IVm:(b)7 - bVII:(b)7 | IIIm:(b)7 - VI:(b)7 | bIIIm(b)7 - bVI:(b)7 | IIm(b)7 | V:(b)7 | I:(b)7 - VI:(b)7 | IIm:(b)7 - V:(b)7 | I
+wiki:   I      | viiø - III7            | vi - II7           | v - I7          ,  IV7    | iv - ♭VII7           | iii - VI7           | ♭iii - ♭VI7           ,    ii   | V7     | I - VI7          | ii - V
+
+"ii-V-I with ♭III+ as dominant substitute"
+ionian: IIm:(b)7 - bIII#5 - I
+wiki:   ii - ♭III+ - I
+
+"ii - V - I"
+ionian: IIm - V - I
+wiki:   ii - V - I
+
+"Backdoor progression"
+ionian: IIm - bII:(b)7 - I
+wiki:   ii - ♭II7 - I
+
+"Romansesca"
+ionian: I^8 - V - VIm - II - I^8 - V - VIm - II - VIm
+wiki:   III - VII - i - V - III - VII - i - V - i
+
+"Ragtime progression"
+ionian: III:(b)7 - VI:(b)7 - II:(b)7 - V:(b)7 - I
+wiki:   III7 - VI7 - II7 - V7
+
+"Andalusian cadence"
+ionian:     IVm - bIII - bII - I
+aeolian:    IVm - III - bII - I
+wiki:       iv - III - ♭II - I
+
+"IV-V-I-vi"
+ionian: IV - V - I^8 - VIm
+wiki:   IV - V - I - VI
+
+"Stomp progression"
+ionian: IV:(b)7 - #IVm:6 - I^8:(b)7/5 - |: I:(b)7 - IV:(b)7 - #IVm:6 - I^8:(b)7/5 :| - VI:(b)7 - II:(b)7 - V:(b)7 - I:(b)7
+wiki:   IV7 - #ivdim7 - I7/5 - I7 - IV7 - #ivdim7 - I7/5 - I7 - IV7 - #ivdim7 - I7/5 - V7/V/V - V7/V - V7 - I7
+
+"IV△7-V7-iii7-vi"
+ionian: IVmaj7          - V:(b)7             - V6            - VIm
+ionian: IVmaj7          - V:(b)7             - IIIm:(b)7      - VIm
+ionian: I6:no(5)add(4)  - VIIdim:add(#5)     - VIIm#5:add(4) - I6:no(5)
+wiki:   IV△7 - V7 - iii7 - vi
+
+"V-IV-I turnaround"
+ionian: V - IV - I
+wiki:   V - IV - I
+
+"Irregular Resolution Type I"
+ionian: V:(b)7 - III:(b)7
+wiki:   V7 - III7
+
+"♭VI-♭VII-I"
+ionian: bVI - bVII - I
+wiki:   ♭VI - ♭VII - I
+
+"Circle progression"
+ionian: VIm - IIm - V - I
+wiki:   vi - ii - V - I
+
+"Passamezzo antico"
+ionian:     VIm - V   - VIm - III - I   - V   - VIm - III - VIm
+aeolian:    Im  - VII - Im  - V   - III - VII - Im  - V   - Im
+wiki:       i - VII - i - V - III - VII - i - V - i
+
+"♭VII-V7 cadence with resolution"
+ionian: bVII - V:(b)7 - I
+wiki:   ♭VII - V7 - I
+
+"Common in ragtime"
+ionian: VIdim6  - V:(b)7 - I
+wiki:   viio7/V - V - I
