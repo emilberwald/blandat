@@ -100,7 +100,7 @@ wiki:   IV7 - #ivdim7 - I7/5 - I7 - IV7 - #ivdim7 - I7/5 - I7 - IV7 - #ivdim7 - 
 
 "IV△7-V7-iii7-vi"
 ionian: IVmaj7          - V:(b)7             - V6            - VIm
-ionian: IVmaj7          - V:(b)7             - IIIm:(b)7      - VIm
+ionian: IVmaj7          - V:(b)7             - IIIm:(b)7     - VIm
 ionian: I6:no(5)add(4)  - VIIdim:add(#5)     - VIIm#5:add(4) - I6:no(5)
 wiki:   IV△7 - V7 - iii7 - vi
 
