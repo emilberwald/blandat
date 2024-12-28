@@ -25,9 +25,9 @@ ionian: I - IV - bVII - IV
 wiki:   I - IV - ♭VII - IV
 
 "Later Folia"
-ionian:         Im  - IV - Im - VII  - IV   - VII  - Im - IV - Im - bVI - Im - VII  - IV   - VII  - Im - bVI - Im
-aeolian:        Im  - V  - Im - bVII - bIII - bVII - Im - V  - Im - V   - Im - bVII - bIII - bVII - Im - V   - Im
-wiki:   i - V - i - ♭VII - ♭III - ♭VII - i - V - i - V - i - ♭VII - ♭III - ♭VII - i - V - i
+ionian:     Im  - IV - Im - VII  - IV   - VII  - Im - IV - Im - bVI - Im - VII  - IV   - VII  - Im - bVI - Im
+aeolian:    Im  - V  - Im - bVII - bIII - bVII - Im - V  - Im - V   - Im - bVII - bIII - bVII - Im - V   - Im
+wiki:       i - V - i - ♭VII - ♭III - ♭VII - i - V - i - V - i - ♭VII - ♭III - ♭VII - i - V - i
 
 "Eight bar blues"
 ionian: I^8:(b)7 - V:(b)7 - IV:(b)7 - IV:(b)7 - I^8:(b)7 - V:(b)7 - I^8:(b)7 - V:(b)7
