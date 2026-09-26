@@ -1,0 +1,9 @@
+@startebnf
+title Svenska
+(* SATSER *)
+sats = inledare, subjekt, satsadverbial, predikatsled;
+inre_sats = initialfält, mittfält, slutfält;
+utvidgad_sats = förfält, inre_sats, efterfält;
+af_sats = inledare, subjekt, adverbial, finit_verb, ? resten av finita verbfrasen ?;
+fa_sats = inledare, finit_verb, subjekt, adverbial, ? resten av finita verbfrasen ?;
+@endebnf

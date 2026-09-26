@@ -1,0 +1,35 @@
+@startebnf
+title Svenska
+(* ORD OCH ORDKLASSER *)
+ord = rotmorfem | sammansaettning | avledning;
+sammansaettning = ord, "-", ord;
+avledning =
+[
+"o-"
+| "be-"
+],
+stam, {"-", stam},
+[
+"-t"
+| "-na"
+| "-bar"
+| "-isk"
+| "-ist"
+| "-lig"
+|"-het"
+];
+substantiv = ? varelser, föremål: species ?;
+adjektiv = ? egenskaper, tillstånd: komparationsgrader ?;
+verb = ? handlingar, händelser: tempus ?;
+egennamn = ? - ?;
+pronomen = ? - ?;
+raekneord = ? - ?;
+particip = ? - ?;
+prepositioner = ? - ?;
+konjunktioner = ? - ?;
+subjunktioner = ? - ?;
+infinitivmaerke = ? - ?;
+interjektioner = ? - ?;
+adverb = ? - ?;
+
+@endebnf
